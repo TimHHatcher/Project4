@@ -17,5 +17,6 @@ describe('First Test', () => {
 					cy.wrap(productList).find('button').click()
 				}
 			})
+		cy.get('.brand').should('have.text', 'GREENKART') //Asserting text via chai
 	})
 })
