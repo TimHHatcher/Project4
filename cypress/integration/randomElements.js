@@ -1,8 +1,11 @@
 import 'cypress-iframe'
 
 describe('Element interactions', () => {
-	it('Checkboxes', () => {
+	beforeEach('Visit the website', () => {
 		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+	})
+
+	it('Checkboxes', () => {
 		cy.get('#checkBoxOption1')
 			.check()
 			.should('be.checked')
@@ -15,7 +18,6 @@ describe('Element interactions', () => {
 	})
 
 	it('Dropdowns', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		cy.get('#dropdown-class-example')
 			.select('Option2')
 			.should('have.value', 'option2') //static dropdown
@@ -31,7 +33,6 @@ describe('Element interactions', () => {
 	})
 
 	it('Element hidden or not', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		cy.get('#displayed-text').should('be.visible')
 		cy.get('#hide-textbox').click()
 		cy.get('#displayed-text').should('not.be.visible')
@@ -40,12 +41,10 @@ describe('Element interactions', () => {
 	})
 
 	it('Radio buttons', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		cy.get('[value="radio2"]').check().should('be.checked')
 	})
 
 	it('Alert popups', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		cy.get('#alertbtn').click() //Cypress auto accepts alerts and popups from browser events
 		cy.get('#confirmbtn').click()
 		cy.on('window:alert', message => {
@@ -65,7 +64,6 @@ describe('Element interactions', () => {
 	})
 
 	it('Child tabs', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		cy.get('#opentab').invoke('removeAttr', 'target').click() //Remove target attribute to test opening a tab which opens in the same tab
 		cy.url().should('contain', 'rahulshettyacademy.com')
 		cy.go('back')
@@ -73,7 +71,6 @@ describe('Element interactions', () => {
 	})
 
 	it('Tables', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		cy.get('[name="courses"] tbody')
 			.contains('tr', 'Master Selenium Automation in simple Python Language')
 			.then(tableRow => {
@@ -82,21 +79,18 @@ describe('Element interactions', () => {
 	})
 
 	it('Mousehover', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		//cy.get('.mouse-hover-content').invoke('show') This will cause the hidden elements to be visible using invoke, which uses jquery
 		cy.contains('Top').click({ force: true }) //force click an invisible element using cypress
 		cy.url().should('contain', 'top')
 	})
 
 	it('Get value of a property', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		cy.get('#opentab').then(tab => {
 			cy.visit(tab.prop('href')) //If the domain is different than the original domain used by the test runner, Cypress will not allow the visit
 		})
 	})
 
-	it.only('iFrames', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+	it('iFrames', () => {
 		cy.frameLoaded('#courses-iframe') //Must use this command to load the fram
 		cy.iframe().contains('Mentorship').click() //Subsequent commands to test the ifram must use this command
 		cy.iframe().find('div h1').should('contain', 'Mentorship')
