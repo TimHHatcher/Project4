@@ -1,3 +1,5 @@
+import 'cypress-iframe'
+
 describe('Element interactions', () => {
 	it('Checkboxes', () => {
 		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
@@ -79,10 +81,25 @@ describe('Element interactions', () => {
 			})
 	})
 
-	it.only('Mousehover', () => {
+	it('Mousehover', () => {
 		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
 		//cy.get('.mouse-hover-content').invoke('show') This will cause the hidden elements to be visible using invoke, which uses jquery
 		cy.contains('Top').click({ force: true }) //force click an invisible element using cypress
 		cy.url().should('contain', 'top')
+	})
+
+	it('Get value of a property', () => {
+		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+		cy.get('#opentab').then(tab => {
+			cy.visit(tab.prop('href')) //If the domain is different than the original domain used by the test runner, Cypress will not allow the visit
+		})
+	})
+
+	it.only('iFrames', () => {
+		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+		cy.frameLoaded('#courses-iframe') //Must use this command to load the fram
+		cy.iframe().contains('Mentorship').click() //Subsequent commands to test the ifram must use this command
+		cy.iframe().find('div h1').should('contain', 'Mentorship')
+		cy.iframe().find('.pricing-container').should('have.length', 2)
 	})
 })
