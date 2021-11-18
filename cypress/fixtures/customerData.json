@@ -1,4 +1,15 @@
 {
 	"name": "Bibby",
-	"gender": "Female"
+	"gender": "Female",
+	"products": [
+		{
+			"productName": "Samsung Note 8",
+			"price": "85000"
+		},
+		{
+			"productName": "Nokia Edge",
+			"price": "65000"
+		}
+	],
+	"country": "United States of America"
 }

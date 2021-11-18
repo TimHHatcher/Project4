@@ -27,7 +27,8 @@
 Cypress.Commands.add('selectProduct', productName => {
 	cy.get('.card-title').each((titles, index) => {
 		if (titles.text().includes(productName)) {
-			cy.get('button').eq(index).click()
+			cy.log(titles.text())
+			cy.get('app-card button').eq(index).click()
 		}
 	})
 })
