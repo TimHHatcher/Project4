@@ -2,7 +2,7 @@ import 'cypress-iframe'
 
 describe('Element interactions', () => {
 	beforeEach('Visit the website', () => {
-		cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+		cy.visit(Cypress.env('qa2'))
 	})
 
 	it('Checkboxes', () => {

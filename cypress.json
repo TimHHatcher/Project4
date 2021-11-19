@@ -2,5 +2,10 @@
 	"viewportHeight": 1080,
 	"viewportWidth": 1920,
 	"defaultCommandTimeout": 10000,
-	"baseUrl": "https://rahulshettyacademy.com/angularpractice/"
+	"baseUrl": "https://rahulshettyacademy.com/angularpractice/",
+	"env": {
+		"qa": "https://rahulshettyacademy.com/angularpractice/",
+		"qa2": "https://rahulshettyacademy.com/AutomationPractice/"
+	},
+	"projectId": "66pqab"
 }

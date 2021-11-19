@@ -5,7 +5,8 @@ import { checkoutPage } from '../support/pageObjects/checkoutPage'
 describe('Framework setup', () => {
 	beforeEach('Visit website', () => {
 		cy.fixture('customerData').as('customers') //Creates an alias that can be access below. Fixture can be accessed by globalThis or the use of normal function
-		cy.visit('/')
+		//cy.visit('/')
+		cy.visit(Cypress.env('qa')) //Another way of doing this via environment variables in cypress.json
 	})
 
 	it('Form Information', function () {
