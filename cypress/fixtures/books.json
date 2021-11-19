@@ -1,0 +1,4 @@
+[
+	{ "book_name": "Book A", "isbn": "ABC", "aisle": "1111" },
+	{ "book_name": "Book B", "isbn": "DEF", "aisle": "2222" }
+]

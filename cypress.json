@@ -5,7 +5,8 @@
 	"baseUrl": "https://rahulshettyacademy.com/angularpractice/",
 	"env": {
 		"qa": "https://rahulshettyacademy.com/angularpractice/",
-		"qa2": "https://rahulshettyacademy.com/AutomationPractice/"
+		"qa2": "https://rahulshettyacademy.com/AutomationPractice/",
+		"books": "https://rahulshettyacademy.com/angularAppdemo/"
 	},
 	"projectId": "66pqab"
 }
